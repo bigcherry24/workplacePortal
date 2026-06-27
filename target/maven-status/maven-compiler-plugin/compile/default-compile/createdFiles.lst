@@ -1,0 +1,15 @@
+com/company/portal/controller/MainController.class
+com/company/portal/repository/NoticeRepository.class
+com/company/portal/service/BannerService.class
+com/company/portal/model/Banner.class
+com/company/portal/repository/UserRepository.class
+com/company/portal/service/EmailService.class
+com/company/portal/model/User.class
+com/company/portal/controller/AuthController.class
+com/company/portal/model/Email.class
+com/company/portal/config/DataInitConfig.class
+com/company/portal/model/Notice.class
+com/company/portal/repository/EmailRepository.class
+com/company/portal/CompanyPortalApplication.class
+com/company/portal/service/NoticeService.class
+com/company/portal/config/SecurityConfig.class

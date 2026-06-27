@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Portal - Main</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background: white;
+            padding: 15px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .header-user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-info {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .logout-button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .logout-button:hover {
+            background: #ee5a5a;
+        }
+
+        .container {
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            height: auto;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .panel-content {
+            padding: 20px;
+        }
+
+        /* 배너 스타일 */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .banner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            animation: fadeIn 0.5s;
+        }
+
+        .banner.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .banner-text {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .banner-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .banner-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .banner-btn:hover {
+            background: #764ba2;
+        }
+
+        .banner-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: #667eea;
+        }
+
+        /* 이메일 리스트 */
+        .email-list {
+            list-style: none;
+        }
+
+        .email-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .email-item:last-child {
+            border-bottom: none;
+        }
+
+        .email-sender {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .email-subject {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .email-date {
+            font-size: 12px;
+            color: #999;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .unread {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        /* 공지사항 */
+        .notice-list {
+            list-style: none;
+        }
+
+        .notice-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .notice-item:last-child {
+            border-bottom: none;
+        }
+
+        .notice-title {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .notice-meta {
+            font-size: 12px;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title">🏢 Company Portal</div>
+        <div class="header-user">
+            <div class="user-info">
+                <span sec:authentication="principal.username"></span>님 환영합니다!
+            </div>
+            <form th:action="@{/logout}" method="post" style="margin: 0;">
+                <button type="submit" class="logout-button">로그아웃</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="main-title">대시보드</h1>
+
+        <div class="layout">
+            <!-- 왼쪽: 롤링 배너 -->
+            <div class="panel">
+                <div class="panel-header">📢 공지 배너</div>
+                <div class="panel-content">
+                    <div class="banner-container" id="bannerContainer">
+                        <div th:each="banner, stat : ${banners}" 
+                             th:class="${stat.first} ? 'banner active' : 'banner'"
+                             th:style="'background-image: url(' + ${banner.image} + ');'">
+                            <div class="banner-text" th:text="${banner.title}"></div>
+                        </div>
+                    </div>
+                    <div class="banner-controls">
+                        <button class="banner-btn" onclick="previousBanner()">← 이전</button>
+                        <button class="banner-btn" onclick="nextBanner()">다음 →</button>
+                    </div>
+                    <div class="banner-dots" id="bannerDots">
+                        <span th:each="banner, stat : ${banners}" 
+                              th:class="${stat.first} ? 'dot active' : 'dot'"
+                              th:onclick="'goToBanner(' + ${stat.index} + ')'"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 중간: 메일 받은 편지함 Top 5 -->
+            <div class="panel">
+                <div class="panel-header">📧 최신 이메일 (Top 5)</div>
+                <div class="panel-content">
+                    <ul class="email-list" th:if="${emails.size() > 0}">
+                        <li class="email-item" th:each="email : ${emails}">
+                            <div style="flex: 1;">
+                                <div class="email-sender" th:text="${email.sender}"></div>
+                                <div class="email-subject" th:class="${!email.isRead} ? 'email-subject unread' : 'email-subject'"
+                                     th:text="${email.subject}"></div>
+                            </div>
+                            <div class="email-date" th:text="${#temporals.format(email.receivedAt, 'MM-dd HH:mm')}"></div>
+                        </li>
+                    </ul>
+                    <div class="empty-message" th:if="${emails.size() == 0}">
+                        <p>수신 이메일이 없습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 오른쪽: 공지게시판 Top 4 -->
+            <div class="panel">
+                <div class="panel-header">📋 공지사항 (Top 4)</div>
+                <div class="panel-content">
+                    <ul class="notice-list" th:if="${notices.size() > 0}">
+                        <li class="notice-item" th:each="notice : ${notices}">
+                            <div class="notice-title" th:text="${notice.title}"></div>
+                            <div class="notice-meta">
+                                <span th:text="${notice.author}"></span>
+                                <span th:text="${#temporals.format(notice.createdAt, 'yyyy-MM-dd')}"></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="empty-message" th:if="${notices.size() == 0}">
+                        <p>공지사항이 없습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentBannerIndex = 0;
+        const banners = document.querySelectorAll('.banner');
+        const totalBanners = banners.length;
+
+        function showBanner(index) {
+            banners.forEach(banner => banner.classList.remove('active'));
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            banners[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextBanner() {
+            currentBannerIndex = (currentBannerIndex + 1) % totalBanners;
+            showBanner(currentBannerIndex);
+        }
+
+        function previousBanner() {
+            currentBannerIndex = (currentBannerIndex - 1 + totalBanners) % totalBanners;
+            showBanner(currentBannerIndex);
+        }
+
+        function goToBanner(index) {
+            currentBannerIndex = index;
+            showBanner(currentBannerIndex);
+        }
+
+        // 자동 롤링 (5초마다)
+        setInterval(nextBanner, 5000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+/workspaces/codespaces-blank/src/main/java/com/company/portal/repository/UserRepository.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/controller/AuthController.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/model/Banner.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/CompanyPortalApplication.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/service/NoticeService.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/repository/NoticeRepository.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/model/User.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/service/BannerService.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/repository/EmailRepository.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/model/Email.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/service/EmailService.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/model/Notice.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/controller/MainController.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/config/SecurityConfig.java
+/workspaces/codespaces-blank/src/main/java/com/company/portal/config/DataInitConfig.java
