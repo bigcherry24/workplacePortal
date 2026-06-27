@@ -1,0 +1,15 @@
+# Java & Maven
+/target/
+*.class
+*.jar
+
+# IntelliJ IDEA
+/.idea/
+*.iml
+
+# 기타 OS/툴 생성 파일
+.DS_Store
+Thumbs.db
+
+# 환경 파일
+.env
