@@ -1,7 +1,7 @@
 package com.company.portal.service;
 
-import com.company.portal.model.Email;
-import com.company.portal.repository.EmailRepository;
+import com.company.portal.model.h2.Email;
+import com.company.portal.repository.h2.EmailRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

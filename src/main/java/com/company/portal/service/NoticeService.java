@@ -1,7 +1,7 @@
 package com.company.portal.service;
 
-import com.company.portal.model.Notice;
-import com.company.portal.repository.NoticeRepository;
+import com.company.portal.model.h2.Notice;
+import com.company.portal.repository.h2.NoticeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

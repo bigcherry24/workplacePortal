@@ -1,6 +1,6 @@
 package com.company.portal.security;
 
-import com.company.portal.model.User;
+import com.company.portal.model.h2.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

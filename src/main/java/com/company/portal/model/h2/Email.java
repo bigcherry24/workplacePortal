@@ -1,4 +1,4 @@
-package com.company.portal.model;
+package com.company.portal.model.h2;
 
 import jakarta.persistence.*;
 

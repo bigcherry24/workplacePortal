@@ -1,7 +1,7 @@
 package com.company.portal.security;
 
-import com.company.portal.model.User;
-import com.company.portal.repository.UserRepository;
+import com.company.portal.model.h2.User;
+import com.company.portal.repository.h2.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

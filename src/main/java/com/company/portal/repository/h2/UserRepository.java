@@ -1,6 +1,6 @@
-package com.company.portal.repository;
+package com.company.portal.repository.h2;
 
-import com.company.portal.model.User;
+import com.company.portal.model.h2.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

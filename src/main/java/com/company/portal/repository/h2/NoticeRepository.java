@@ -1,6 +1,6 @@
-package com.company.portal.repository;
+package com.company.portal.repository.h2;
 
-import com.company.portal.model.Notice;
+import com.company.portal.model.h2.Notice;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

@@ -26,6 +26,7 @@ public class MainController {
     public String main(Model model, Authentication authentication) {
         // 현재 로그인한 사용자명 가져오기
         String username = authentication.getName();
+        model.addAttribute("username", username);
 
         // 롤링 배너 데이터
         model.addAttribute("banners", bannerService.getBanners());

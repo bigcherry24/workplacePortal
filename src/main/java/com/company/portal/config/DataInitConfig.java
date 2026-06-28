@@ -1,11 +1,11 @@
 package com.company.portal.config;
 
-import com.company.portal.model.Email;
-import com.company.portal.model.Notice;
-import com.company.portal.model.User;
-import com.company.portal.repository.EmailRepository;
-import com.company.portal.repository.NoticeRepository;
-import com.company.portal.repository.UserRepository;
+import com.company.portal.model.h2.Email;
+import com.company.portal.model.h2.Notice;
+import com.company.portal.model.h2.User;
+import com.company.portal.repository.h2.EmailRepository;
+import com.company.portal.repository.h2.NoticeRepository;
+import com.company.portal.repository.h2.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
